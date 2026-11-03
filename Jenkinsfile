@@ -4,7 +4,7 @@ pipeline {
 
     environment {
         AWS_REGION = 'ap-south-1'
-        AWS_ACCOUNT_ID = '1902-8548-9334'
+        AWS_ACCOUNT_ID = '190285489334'
         ECR_REPO = 'devops_project_prac'
         IMAGE_NAME = 'springboot_project'
         ECR_URI = "${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/${ECR_REPO}"
