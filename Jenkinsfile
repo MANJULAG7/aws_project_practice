@@ -24,7 +24,14 @@ pipeline {
         stage('Maven Build') {
             steps {
                 echo 'Building Java application'
-                sh 'mvn clean package -DskipTests'
+                sh '''
+		export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
+                export PATH=$JAVA_HOME/bin:$PATH
+
+                echo "Checking Java version"
+                java -version
+                javac -version
+		mvn clean package -DskipTests'''
             }
         }
 
@@ -32,13 +39,7 @@ pipeline {
         stage('Docker Build') {
             steps {
                 echo 'Building Docker image'
-                sh '''export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
-                      export PATH=$JAVA_HOME/bin:$PATH
-
-                      echo "Checking Java version"
-                      java -version
-                      javac -version
-                      docker build -t springboot_project .'''
+                sh 'docker build -t springboot_project .'''
             }
         }
 
