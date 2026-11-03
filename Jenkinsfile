@@ -39,7 +39,7 @@ pipeline {
         stage('Docker Build') {
             steps {
                 echo 'Building Docker image'
-                sh 'docker build -t springboot_project .'''
+                sh 'docker build -t springboot_project .'
             }
         }
 
